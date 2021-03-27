@@ -30,6 +30,6 @@ steps:
     azureSubscription: 'aks_powershell_connection'
     ScriptType: 'FilePath'
     ScriptPath: '$(Build.SourcesDirectory)\int_datadsk_cse.ps1'
-    ScriptArguments: '-rgName aks  -location ''East US'' -vmName vm -scriptName intdsk -stgaccname fhadoo -stgacckey Ttc25hOwsxN5JT8oUocOYWJKY7GsUPL5+04nRDau3hhWmU/LmnMsXRreWuxS29MlutcKoIhUf3bBWVemhiGz+w== -fileName intdsk.ps1 -containername cse'
+    ScriptArguments: '-rgName aks  -location EastUS -vmName vm -scriptName intdsk -stgaccname fhadoo -stgacckey Ttc25hOwsxN5JT8oUocOYWJKY7GsUPL5+04nRDau3hhWmU/LmnMsXRreWuxS29MlutcKoIhUf3bBWVemhiGz+w== -fileName intdsk.ps1 -containername cse'
     azurePowerShellVersion: 'LatestVersion'
     workingDirectory: '$(Build.SourcesDirectory)'
