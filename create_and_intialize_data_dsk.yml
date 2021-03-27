@@ -1,0 +1,35 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: windows-2019
+
+steps:
+
+- task: AzurePowerShell@5
+  displayName: create disks and attaches disks, update vm
+  inputs:
+    azureSubscription: 'aks_powershell_connection'
+    ScriptType: 'FilePath'
+    ScriptPath: '$(Build.SourcesDirectory)\create_attach_dsk.ps1'
+    ScriptArguments: '-rgName aks -vmName vm -location ''East US'' -storageType Premium_LRS'
+    azurePowerShellVersion: 'LatestVersion'
+    workingDirectory: '$(Build.SourcesDirectory)'
+  continueOnError: false
+  condition: succeeded()
+
+
+- task: AzurePowerShell@5
+  displayName: intializing data disk in vm
+  inputs:
+    azureSubscription: 'aks_powershell_connection'
+    ScriptType: 'FilePath'
+    ScriptPath: '$(Build.SourcesDirectory)\int_datadsk_cse.ps1'
+    ScriptArguments: '-rgName aks  -location ''East US'' -vmName vm -scriptName intdsk -stgaccname fhadoo -stgacckey Ttc25hOwsxN5JT8oUocOYWJKY7GsUPL5+04nRDau3hhWmU/LmnMsXRreWuxS29MlutcKoIhUf3bBWVemhiGz+w== -fileName intdsk.ps1 -containername cse'
+    azurePowerShellVersion: 'LatestVersion'
+    workingDirectory: '$(Build.SourcesDirectory)'
