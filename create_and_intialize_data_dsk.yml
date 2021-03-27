@@ -21,7 +21,7 @@ steps:
     azurePowerShellVersion: 'LatestVersion'
     workingDirectory: '$(Build.SourcesDirectory)'
   continueOnError: false
-  condition: succeeded()
+ 
 
 
 - task: AzurePowerShell@5
