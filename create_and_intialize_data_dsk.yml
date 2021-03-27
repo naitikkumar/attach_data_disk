@@ -20,7 +20,7 @@ steps:
     ScriptArguments: '-rgName aks -vmName vm -location ''East US'' -storageType Premium_LRS'
     azurePowerShellVersion: 'LatestVersion'
     workingDirectory: '$(Build.SourcesDirectory)'
-  continueOnError: false
+
  
 
 
