@@ -4,7 +4,7 @@ $location,
 $vmName,
 $scriptName,
 $stgaccname,
-$$stgacckey,
+$stgacckey,
 $fileName,
 $containername
 )
